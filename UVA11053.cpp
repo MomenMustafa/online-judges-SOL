@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    freopen("tst.txt", "w", stdout);
+    //freopen("tst.txt", "w", stdout);
     int n, a, b;
     while(scanf("%d", &n)==1 && n)
     {
