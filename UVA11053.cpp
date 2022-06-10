@@ -1,29 +1,35 @@
-#include <stdio.h>
-#include<map>
-#include<iostream>
-#define ll long long
+#include <bits/stdc++.h>
 using namespace std;
 
-int main()
+#define ll long long
+
+int n, a, b;
+inline ll f(int x)
 {
-    //freopen("tst.txt", "w", stdout);
-    int n, a, b;
-    while(scanf("%d", &n)==1 && n)
+    return ((((1ll*a%n)*1ll*(x%n))%n * (x%n))%n +b)%n;
+}
+int main() {
+
+	while(scanf("%d", &n)==1 && n)
     {
         scanf("%d %d", &a, &b);
-        int x =0;
-        map<ll, int>s;
-        int steps =0;
-        while(s.find(x)==s.end())
-        {
-//            cout<<x<<endl;
-            s[x]=steps++;
-            x=(((1ll*(a%n) * (x%n))%n * (x%n))%n + 1ll*b)%n;
-        }
-        ll repeated = s.size()-s[x];
-        printf("%d\n", n-repeated);
+        ll slow = f(0);
+        ll fast = f(f(0));
 
+        while(slow != fast)
+            slow = f(slow), fast=f(f(fast));
+
+        slow=0;
+        while (slow!=fast)
+            slow=f(slow), fast=f(fast);
+            
+        ll ans=1;
+        fast = f(slow);
+        while(fast != slow)
+            fast=f(fast), ++ans;
+            
+
+        printf("%lld\n", n-ans);
     }
-    return 0;
+return 0;
 }
-
