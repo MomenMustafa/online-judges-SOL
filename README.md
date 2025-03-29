@@ -1,2 +1,2 @@
 # online-judges-SOL
-collection of my solved problems
+collection of some of my solved problems
