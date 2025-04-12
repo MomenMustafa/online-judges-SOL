@@ -17,11 +17,10 @@ int main()
         {
             int current;
             scanf("%d", &current);
-            if( current != a)
-            {
+        
                 int tmp = last - current;
                 if(tmp > 0) ans += tmp;
-            }
+            
             last = current;
         }
 
